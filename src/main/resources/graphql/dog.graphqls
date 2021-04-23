@@ -1,0 +1,19 @@
+type Dog{
+    id:ID!
+    name:String!
+    breed:String!
+    origin:String!
+}
+
+type Query{
+ findDogById(id:ID!):Dog!
+ findAllDogs:[Dog]! #If we want breed we can request it within this query, that's the power of GraphQL
+}
+
+type Mutation{
+ deleteDogBreed(breed:String!):Boolean!
+ updateDogName(id:ID!,newName:String!):Dog!
+}
+
+#Reference -
+    #1. Now, you may be thinking I did not actually implement the query operations that were requested. But wait - using GraphQL, the user will be able to specify which fields they want from a query. So, simply by adding the queries for find all dogs (where they can request only breed, or only names), and finding a dog by id (where they can request just the breed), these operations actually exist.
